@@ -15,9 +15,10 @@ export async function asyncExec(cmd: string, args?: string[]) {
       resultMessage += "\n" + data;
     });
 
-    process.stdout.on('data', data => {
-      console.log(data);
-    })
+    childProcess.on("message", message => {
+      console.log(11, message);
+    });
+    
 
     childProcess.on("close", code => {
       if (code == 0) {
