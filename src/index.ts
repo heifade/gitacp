@@ -1,6 +1,6 @@
 import * as yargs from "yargs";
-
 import { asyncExec } from "./asyncExec";
+import chalk from "chalk";
 
 let argv = yargs.option("m", {
   alias: "message",
@@ -12,15 +12,15 @@ let argv = yargs.option("m", {
 
 async function run(commitMessage: string) {
   let resultMsg = await asyncExec("git", ["add", "."]);
-  console.log(resultMsg);
+  console.log(chalk.green.bold(resultMsg));
   resultMsg = await asyncExec("git", ["commit", "-m", `${commitMessage}`]);
-  console.log(resultMsg);
+  console.log(chalk.green.bold(resultMsg));
   resultMsg = await asyncExec("git", ["push"]);
-  console.log(resultMsg);
+  console.log(chalk.green.bold(resultMsg));
 }
 
 run(argv.m)
   .then()
-  .then(err => {
-    console.log(err);
+  .catch(err => {
+    console.log(chalk.red.bold(err));
   });

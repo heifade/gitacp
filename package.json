@@ -19,7 +19,7 @@
   },
   "scripts": {
     "clean": "node ./tools/clean.js",
-    "tsBuild": "tsc -p tsconfig.json",
+    "tsBuild": "tsc -p tsconfig.json && node ./tools/copy.js",
     "docs": "typedoc --out docs src --module commonjs --hideGenerator && node ./tools/formatDocs.js",
     "build": "npm run clean && npm run tsBuild && npm run docs",
     "start": "npm run build && node ./es/index.js -m 'no message'"
@@ -31,6 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/yargs": "^10.0.0",
+    "chalk": "^2.3.0",
     "child_process": "^1.0.2",
     "yargs": "^10.0.3"
   }
