@@ -21,7 +21,7 @@
     "tsBuild": "tsc -p tsconfig.json",
     "docs": "typedoc --out docs src --module commonjs --hideGenerator && node ./tools/formatDocs.js",
     "build": "npm run clean && npm run tsBuild",
-    "start": "npm run build && node ./es/index.js -m hellow"
+    "start": "npm run build && node ./es/index.js -m 'no message'"
   },
   "keywords": [
     "gitacp"
