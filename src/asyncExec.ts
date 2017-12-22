@@ -4,6 +4,7 @@ export async function asyncExec(cmd: string, args?: string[]) {
   return new Promise<string>((resolve, reject) => {
     let childProcess = spawn(cmd, args, {
       // stdio: 'inherit'
+      detached: true,
     });
     let resultMessage = "";
 
