@@ -13,7 +13,7 @@ let argv = yargs.option("m", {
 async function run(commitMessage: string) {
   let resultMsg = await asyncExec("git", ["add", "."]);
   console.log(resultMsg);
-  resultMsg = await asyncExec("git", ["commit", "-m", "${commitMessage}"]);
+  resultMsg = await asyncExec("git", ["commit", "-m", `${commitMessage}`]);
   console.log(resultMsg);
   resultMsg = await asyncExec("git", ["push"]);
   console.log(resultMsg);
