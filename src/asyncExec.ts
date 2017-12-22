@@ -7,7 +7,7 @@ export async function asyncExec(cmd: string, args?: string[]) {
 
     childProcess.stdout.on("data", data => {
       resultMessage += "\n" + data;
-      console.log(cmd, data);
+      console.log(cmd, args, data);
     });
 
     childProcess.stderr.on("data", data => {
