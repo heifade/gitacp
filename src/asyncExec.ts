@@ -13,7 +13,7 @@ export async function asyncExec(cmd: string, args?: string[]) {
       resultMessage += "\n" + data;
     });
 
-    childProcess.on("exit", code => {
+    childProcess.on("close", code => {
       if (code == 0) {
         resolve(resultMessage);
       } else {

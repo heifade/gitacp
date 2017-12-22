@@ -12,15 +12,16 @@
     "gitacp": "./es/bin/gitacp"
   },
   "devDependencies": {
+    "fs-extra": "^5.0.0",
     "typedoc": "^0.9.0",
-    "typescript": "^2.6.1",
-    "fs-extra": "^5.0.0"
+    "typedoc-format": "^1.0.0-beta1",
+    "typescript": "^2.6.1"
   },
   "scripts": {
     "clean": "node ./tools/clean.js",
     "tsBuild": "tsc -p tsconfig.json",
     "docs": "typedoc --out docs src --module commonjs --hideGenerator && node ./tools/formatDocs.js",
-    "build": "npm run clean && npm run tsBuild",
+    "build": "npm run clean && npm run tsBuild && npm run docs",
     "start": "npm run build && node ./es/index.js -m 'no message'"
   },
   "keywords": [
