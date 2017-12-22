@@ -11,11 +11,11 @@ let argv = yargs.option("m", {
 }).argv;
 
 async function run(commitMessage: string) {
-  let resultMsg = await asyncExec("git add .");
+  let resultMsg = await asyncExec("git", ["add", "."]);
   console.log(resultMsg);
-  resultMsg = await asyncExec(`git commit -m "${commitMessage}"`);
+  resultMsg = await asyncExec("git", ["commit", "-m", "${commitMessage}"]);
   console.log(resultMsg);
-  resultMsg = await asyncExec(`git push`);
+  resultMsg = await asyncExec("git", ["push"]);
   console.log(resultMsg);
 }
 
@@ -25,4 +25,3 @@ run(argv.m)
     console.log(err);
   });
 
-  

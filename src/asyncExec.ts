@@ -1,13 +1,24 @@
-import { exec } from "child_process";
+import { spawn } from "child_process";
 
-export async function asyncExec(cmd: string) {
+export async function asyncExec(cmd: string, args?: string[]) {
   return new Promise<string>((resolve, reject) => {
-    exec(cmd, function(err, stdout, stderr) {
-      if (err) {
-        reject(stderr);
-        return;
+    let childProcess = spawn(cmd, args);
+    let resultMessage = "";
+
+    childProcess.stdout.on("data", data => {
+      resultMessage += "\n" + data;
+    });
+
+    childProcess.stderr.on("data", data => {
+      resultMessage += "\n" + data;
+    });
+
+    childProcess.on("close", code => {
+      if (code == 0) {
+        resolve(resultMessage);
+      } else {
+        reject(resultMessage);
       }
-      resolve(stdout);
     });
   });
 }
