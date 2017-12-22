@@ -4,7 +4,7 @@ export async function asyncExec(cmd: string, args?: string[]) {
   return new Promise<string>((resolve, reject) => {
 
     let returnValue = spawnSync(cmd, args, {encoding: 'utf8'});
-    console.log( returnValue.output);
+    console.log(returnValue.stdout);
 
     resolve('1')
 
