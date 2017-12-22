@@ -21,7 +21,7 @@
     "tsBuild": "tsc -p tsconfig.json",
     "docs": "typedoc --out docs src --module commonjs --hideGenerator && node ./tools/formatDocs.js",
     "build": "npm run clean && npm run tsBuild",
-    "start": "npm run build && node ./es/index.js"
+    "start": "npm run build && node ./es/index.js -m hellow"
   },
   "keywords": [
     "gitacp"
@@ -29,8 +29,8 @@
   "author": "heifade",
   "license": "MIT",
   "dependencies": {
-    "@types/commander": "^2.12.2",
+    "@types/yargs": "^10.0.0",
     "child_process": "^1.0.2",
-    "commander": "^2.12.2"
+    "yargs": "^10.0.3"
   }
 }
