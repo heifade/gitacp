@@ -20,7 +20,9 @@ async function run(commitMessage: string) {
 }
 
 run(argv.m)
-  .then()
+  .then(() => {
+    console.log(chalk.green.bold("Success!"));
+  })
   .catch(err => {
     console.log(chalk.red.bold(err));
   });
