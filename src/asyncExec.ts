@@ -3,15 +3,15 @@ import { spawn } from "child_process";
 export async function asyncExec(cmd: string, args?: string[]) {
   return new Promise<string>((resolve, reject) => {
     let childProcess = spawn(cmd, args, {
-      stdio: 'inherit'
+      // stdio: 'inherit'
     });
     let resultMessage = "";
 
-    process.stdout.on("data", data => {
+    childProcess.stdout.on("data", data => {
       resultMessage += "\n" + data;
     });
 
-    process.stderr.on("data", data => {
+    childProcess.stderr.on("data", data => {
       resultMessage += "\n" + data;
     });
 
