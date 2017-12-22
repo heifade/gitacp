@@ -12,15 +12,15 @@ let argv = yargs.option("m", {
 
 async function run(commitMessage: string) {
   let resultMsg = await asyncExec("git add .");
-  console.log(1, resultMsg);
+  console.log(resultMsg);
   resultMsg = await asyncExec(`git commit -m "${commitMessage}"`);
-  console.log(2, resultMsg);
+  console.log(resultMsg);
   resultMsg = await asyncExec(`git push`);
-  console.log(3, resultMsg);
+  console.log(resultMsg);
 }
 
 run(argv.m)
   .then()
   .then(err => {
-    console.log('e', err);
+    console.log(err);
   });
