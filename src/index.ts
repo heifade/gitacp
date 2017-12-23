@@ -15,9 +15,9 @@ async function print(title: string, msg: string, showIndex: boolean) {
   if (msg) {
     msg.split("\n").map((msg, index) => {
       if (showIndex) {
-        console.log(chalk.green(`    ${index + 1}  ${msg}`));
+        console.log(chalk.green(`    ${index + 1}  ${msg.trim()}`));
       } else {
-        console.log(chalk.green(`    ${msg}`));
+        console.log(chalk.green(`    ${msg.trim()}`));
       }
     });
   }
@@ -29,8 +29,10 @@ async function run(commitMessage: string) {
 
   resultMsg = await asyncExec("git", ["add", "."]);
   await print("git add .", resultMsg, false);
+
   resultMsg = await asyncExec("git", ["commit", "-m", `${commitMessage}`]);
   await print(`git commit -m "${commitMessage}"`, resultMsg, false);
+
   resultMsg = await asyncExec("git", ["push"]);
   await print(`git push`, resultMsg, false);
 }
