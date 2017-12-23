@@ -28,11 +28,11 @@ async function run(commitMessage: string) {
   await print("git status -s -uno", resultMsg, true);
 
   resultMsg = await asyncExec("git", ["add", "."]);
-  await print("git add .", resultMsg, true);
+  await print("git add .", resultMsg, false);
   resultMsg = await asyncExec("git", ["commit", "-m", `${commitMessage}`]);
-  await print(`git commit -m "${commitMessage}"`, resultMsg, true);
+  await print(`git commit -m "${commitMessage}"`, resultMsg, false);
   resultMsg = await asyncExec("git", ["push"]);
-  await print(`git push`, resultMsg, true);
+  await print(`git push`, resultMsg, false);
 }
 
 run(argv.m)
