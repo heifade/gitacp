@@ -15,9 +15,9 @@ export async function asyncExec(cmd: string, args?: string[]) {
 
     childProcess.on("close", code => {
       if (code == 0) {
-        resolve(resultMessage);
+        resolve(resultMessage.trim());
       } else {
-        reject(resultMessage);
+        reject(resultMessage.trim());
       }
     });
   });
