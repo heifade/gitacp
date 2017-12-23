@@ -14,7 +14,7 @@ async function run(commitMessage: string) {
   let resultMsg = await asyncExec("git", ["status", "-s", "-uno"]);
   console.log(chalk.blue.bold("File Changed list:"));
   resultMsg.split("\n").map((msg, index) => {
-    console.log(chalk.green(`    ${index + 1}${msg.trim()}`));
+    console.log(chalk.green(`    ${index + 1}.${msg.trim()}`));
   });
 
   resultMsg = await asyncExec("git", ["add", "."]);
