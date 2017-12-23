@@ -24,6 +24,7 @@ export async function asyncExec(cmd: string, args?: string[]) {
     
 
     childProcess.on("close", code => {
+      console.log('close', code);
       if (code == 0) {
         resolve(resultMessage);
       } else {
