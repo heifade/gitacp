@@ -92,8 +92,3 @@ run()
   .catch(err => {
     console.log(chalk.red.bold(err));
   });
-
-process.on("SIGINT", function() {
-  console.log("Got a SIGINT");
-  process.exit(0);
-});
