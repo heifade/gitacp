@@ -14,11 +14,13 @@ async function print(title: string, msg: string, showIndex: boolean) {
   console.log(chalk.blue.bold(`${title}`));
   if (msg) {
     msg.split("\n").map((msg, index) => {
+      let text;
       if (showIndex) {
-        console.log(chalk.green(`    ${index + 1}  ${msg.trim()}`));
+        text = `    ${index + 1}  ${msg.trim()}`;
       } else {
-        console.log(chalk.green(`    ${msg.trim()}`));
+        text = `    ${msg.trim()}`;
       }
+      console.log(chalk.green(text));
     });
   }
 }
