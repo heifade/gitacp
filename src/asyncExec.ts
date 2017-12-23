@@ -2,9 +2,7 @@ import { spawn } from "child_process";
 
 export async function asyncExec(cmd: string, args?: string[]) {
   return new Promise<string>((resolve, reject) => {
-    let childProcess = spawn(cmd, args, {
-      stdio: ["pipe", "pipe", "pipe"]
-    });
+    let childProcess = spawn(cmd, args);
     let resultMessage = "";
 
     childProcess.stdout.on("data", data => {
@@ -23,5 +21,4 @@ export async function asyncExec(cmd: string, args?: string[]) {
       }
     });
   });
-
 }
