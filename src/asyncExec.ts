@@ -8,11 +8,11 @@ export async function asyncExec(cmd: string, args?: string[]) {
     let resultMessage = "";
 
     childProcess.stdout.on("data", data => {
-      resultMessage += "\n" + data;
+      resultMessage += data + "\n";
     });
 
     childProcess.stderr.on("data", data => {
-      resultMessage += "\n" + data;
+      resultMessage += data + "\n";
     });
 
     childProcess.on("close", code => {
@@ -23,5 +23,5 @@ export async function asyncExec(cmd: string, args?: string[]) {
       }
     });
   });
-  
+
 }
