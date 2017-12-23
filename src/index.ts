@@ -10,24 +10,26 @@ let argv = yargs.option("m", {
   type: "string"
 }).argv;
 
-async function run(commitMessage: string) {
-  let resultMsg = await asyncExec("git", ["status", "-s", "-uno"]);
-  console.log(chalk.blue.bold("git status -s -uno"));
-  if (resultMsg) {
-    resultMsg.split("\n").map((msg, index) => {
-      console.log(chalk.green(`    ${index + 1}  ${msg.trim()}`));
+async function print(title: string, msg: string) {
+  console.log(chalk.blue.bold(`${title}`));
+  if (msg) {
+    msg.split("\n").map((msg, index) => {
+      console.log(chalk.green(`    ${index + 1}  ${msg}`));
     });
   }
+}
+
+async function run(commitMessage: string) {
+  let resultMsg = await asyncExec("git", ["status", "-s", "-uno"]);
+  await print('git status -s -uno', resultMsg);
+  
 
   resultMsg = await asyncExec("git", ["add", "."]);
-  console.log(chalk.blue.bold("git add ."));
-  console.log(chalk.green(resultMsg));
+  await print('git add .', resultMsg);
   resultMsg = await asyncExec("git", ["commit", "-m", `${commitMessage}`]);
-  console.log(chalk.blue.bold(`git commit -m "${commitMessage}"`));
-  console.log(chalk.green(resultMsg));
+  await print(`git commit -m "${commitMessage}"`, resultMsg);
   resultMsg = await asyncExec("git", ["push"]);
-  console.log(chalk.blue.bold("git push"));
-  console.log(chalk.green(resultMsg));
+  await print(`git push`, resultMsg);
 }
 
 run(argv.m)
