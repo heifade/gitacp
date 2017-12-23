@@ -1,6 +1,6 @@
 {
   "name": "gitacp",
-  "version": "1.0.0-beta7",
+  "version": "1.0.0-beta8",
   "description": "gitacp",
   "main": "./es/index.js",
   "module": "./es/index.js",
@@ -12,12 +12,6 @@
     "gitacp": "./es/bin/gitacp",
     "gitp": "./es/bin/gitp",
     "acp": "./es/bin/acp"
-  },
-  "devDependencies": {
-    "fs-extra": "^5.0.0",
-    "typedoc": "^0.9.0",
-    "typedoc-format": "^1.0.0-beta1",
-    "typescript": "^2.6.1"
   },
   "scripts": {
     "clean": "node ./tools/clean.js",
@@ -31,8 +25,14 @@
   ],
   "author": "heifade",
   "license": "MIT",
+  "devDependencies": {
+    "fs-extra": "^5.0.0",
+    "typedoc": "^0.9.0",
+    "typedoc-format": "^1.0.0-beta1",
+    "typescript": "^2.6.1",
+    "@types/yargs": "^10.0.0"
+  },
   "dependencies": {
-    "@types/yargs": "^10.0.0",
     "chalk": "^2.3.0",
     "child_process": "^1.0.2",
     "yargs": "^10.0.3"
