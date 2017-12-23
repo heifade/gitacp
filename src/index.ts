@@ -15,6 +15,7 @@ async function run(commitMessage: string) {
   resultMsg.split("\n").map(msg => {
     console.log(chalk.blue.bold(msg));
   });
+  
 
   resultMsg = await asyncExec("git", ["add", "."]);
   console.log(chalk.green.bold(resultMsg));
