@@ -1,6 +1,6 @@
 {
   "name": "gitacp",
-  "version": "1.0.0-beta4",
+  "version": "1.0.0-beta5",
   "description": "gitacp",
   "main": "./es/index.js",
   "module": "./es/index.js",
@@ -9,7 +9,9 @@
     "es"
   ],
   "bin": {
-    "gitacp": "./es/bin/gitacp"
+    "gitacp": "./es/bin/gitacp",
+    "gitp": "./es/bin/gitp",
+    "acp": "./es/bin/acp"
   },
   "devDependencies": {
     "fs-extra": "^5.0.0",
