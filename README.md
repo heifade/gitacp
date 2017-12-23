@@ -16,7 +16,33 @@ gitacp
 
 # 安装
 ```bash
-npm install gitacp
+npm install gitacp -g
 ```
 
 # 介绍
+为方便使用git，将git status，git add，git commit，git push 整合到一起。并自动更新版本号+1
+
+# 命令:
+> gitacp
+> gitp
+> acp
+以上命令等价
+
+# gitacp
+相当于
+git status -s
+git add .
+git commit -m 'no message'
+git push
+
+# gitacp -m 'msg'
+相当于
+git status -s
+git add .
+git commit -m 'msg'
+git push
+
+# gitacp -m 'msg' -v
+相当于如下组合：
+1、将版本号加1：如当前版本号为10.2.3 变成 10.2.4。 如当前版本号为10.2.3-beta1 变成 10.2.3-beta2
+2、gitacp -m 'msg'
