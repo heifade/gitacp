@@ -60,7 +60,7 @@ async function addVersion(isAddVersion: boolean) {
     let json = JSON.parse(readFileSync(packageFile, { encoding: "utf-8" }));
     let version = json.version as string;
 
-    console.log(chalk.blue.bold("Version changed:"));
+    console.log(chalk.blue.bold("version changed:"));
 
     let versionNew;
     if (version.match(/beta/i)) {
@@ -76,7 +76,7 @@ async function addVersion(isAddVersion: boolean) {
 
     writeFileSync(packageFile, JSON.stringify(json, null, 2));
 
-    console.log(chalk.green(`${version} => ${versionNew}`));
+    console.log(chalk.green(`    ${version} => ${versionNew}`));
   }
 }
 
