@@ -10,26 +10,29 @@ let argv = yargs.option("m", {
   type: "string"
 }).argv;
 
-async function print(title: string, msg: string) {
+async function print(title: string, msg: string, showIndex: boolean) {
   console.log(chalk.blue.bold(`${title}`));
   if (msg) {
     msg.split("\n").map((msg, index) => {
-      console.log(chalk.green(`    ${index + 1}  ${msg}`));
+      if (showIndex) {
+        console.log(chalk.green(`    ${index + 1}  ${msg}`));
+      } else {
+        console.log(chalk.green(`    ${msg}`));
+      }
     });
   }
 }
 
 async function run(commitMessage: string) {
   let resultMsg = await asyncExec("git", ["status", "-s", "-uno"]);
-  await print('git status -s -uno', resultMsg);
-  
+  await print("git status -s -uno", resultMsg, true);
 
   resultMsg = await asyncExec("git", ["add", "."]);
-  await print('git add .', resultMsg);
+  await print("git add .", resultMsg, true);
   resultMsg = await asyncExec("git", ["commit", "-m", `${commitMessage}`]);
-  await print(`git commit -m "${commitMessage}"`, resultMsg);
+  await print(`git commit -m "${commitMessage}"`, resultMsg, true);
   resultMsg = await asyncExec("git", ["push"]);
-  await print(`git push`, resultMsg);
+  await print(`git push`, resultMsg, true);
 }
 
 run(argv.m)
