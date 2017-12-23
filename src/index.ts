@@ -3,10 +3,12 @@ import { asyncExec } from "./asyncExec";
 import chalk from "chalk";
 import { readFileSync, writeFileSync } from "fs";
 
+let defaultMessage = "no message";
+
 let pars = option("m", {
   alias: "message",
   demand: false,
-  default: "no message",
+  default: defaultMessage,
   describe: "Please input message!",
   type: "string"
 }).option("v", {
@@ -77,12 +79,19 @@ async function addVersion(isAddVersion: boolean) {
     writeFileSync(packageFile, JSON.stringify(json, null, 2));
 
     console.log(chalk.green(`    ${version} => ${versionNew}`));
+
+    return versionNew;
   }
 }
 
 async function run() {
-  await addVersion(pars.v);
-  await gitacp(pars.m);
+  let versionNew = await addVersion(pars.v);
+  // 如果没有填说明信息，并且版本号自增时，取版本号
+  let message = pars.m;
+  if (message === defaultMessage && versionNew) {
+    message = versionNew;
+  }
+  await gitacp(message);
 }
 
 run()
