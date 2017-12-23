@@ -1,8 +1,8 @@
-import * as yargs from "yargs";
+import { option } from "yargs";
 import { asyncExec } from "./asyncExec";
 import chalk from "chalk";
 
-let argv = yargs.option("m", {
+let argv = option("m", {
   alias: "message",
   demand: false,
   default: "no message",
