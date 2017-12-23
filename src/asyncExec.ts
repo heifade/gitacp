@@ -25,6 +25,7 @@ export async function asyncExec(cmd: string, args?: string[]) {
       // } else {
       //   reject(resultMessage);
       // }
+      
 
       setTimeout(() => {
         resolve(resultMessage);
