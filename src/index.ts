@@ -12,7 +12,7 @@ let pars = option("m", {
 }).option("v", {
   alias: "addVersion",
   demand: false,
-  default: "no message",
+  default: false,
   describe: "Is auto add version",
   type: "boolean"
 }).argv;
