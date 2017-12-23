@@ -1,6 +1,6 @@
 {
   "name": "gitacp",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "gitacp",
   "main": "./es/index.js",
   "module": "./es/index.js",
@@ -10,8 +10,8 @@
   ],
   "bin": {
     "gitacp": "./es/bin/gitacp",
-    "gitp": "./es/bin/gitp",
-    "acp": "./es/bin/acp"
+    "gitp": "./es/bin/gitacp",
+    "acp": "./es/bin/gitacp"
   },
   "scripts": {
     "clean": "node ./tools/clean.js",
