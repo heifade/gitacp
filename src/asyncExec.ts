@@ -15,21 +15,12 @@ export async function asyncExec(cmd: string, args?: string[]) {
       resultMessage += "\n" + data;
     });
 
-    
-    
-
     childProcess.on("close", code => {
-      // console.log('close', code);
-      // if (code == 0) {
-      //   resolve(resultMessage);
-      // } else {
-      //   reject(resultMessage);
-      // }
-      
-
-      setTimeout(() => {
+      if (code == 0) {
         resolve(resultMessage);
-      }, 5000);
+      } else {
+        reject(resultMessage);
+      }
     });
   });
 }
