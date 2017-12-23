@@ -26,8 +26,8 @@ async function print(title: string, msg: string, showIndex: boolean) {
 }
 
 async function run(commitMessage: string) {
-  let resultMsg = await asyncExec("git", ["status", "-s", "-uno"]);
-  await print("git status -s -uno", resultMsg, true);
+  let resultMsg = await asyncExec("git", ["status", "-s"]);
+  await print("git status -s", resultMsg, true);
 
   resultMsg = await asyncExec("git", ["add", "."]);
   await print("git add .", resultMsg, false);
