@@ -13,9 +13,10 @@ let argv = yargs.option("m", {
 async function run(commitMessage: string) {
   let resultMsg = await asyncExec("git", ["status", "-s", "-uno"]);
   resultMsg.split("\n").map(msg => {
-    console.log(chalk.blue.bold(msg));
+    console.log(chalk.blue.bold('File Changed list:'));
+    console.log(chalk.green.bold(msg));
   });
-  
+
 
   resultMsg = await asyncExec("git", ["add", "."]);
   console.log(chalk.green.bold(resultMsg));
