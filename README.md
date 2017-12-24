@@ -26,9 +26,10 @@ npm install gitacp -g
 ```bash
 gitacp
 gitp
+acp
 pp
 ```
-以上3个命令等价
+以上4个命令等价
 
 # gitacp
 相当于
