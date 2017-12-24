@@ -25,7 +25,7 @@ npm install gitacp -g
 # 命令:
 > gitacp
 > gitp
-> acp
+> pp
 以上命令等价
 
 # gitacp
