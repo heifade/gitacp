@@ -1,6 +1,6 @@
 {
   "name": "gitacp",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "gitacp",
   "main": "./es/index.js",
   "module": "./es/index.js",
