@@ -1,6 +1,6 @@
 {
   "name": "gitacp",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "gitacp",
   "main": "./es/index.js",
   "module": "./es/index.js",
@@ -19,7 +19,7 @@
     "tsBuild": "tsc -p tsconfig.json && node ./tools/copy.js",
     "docs": "typedoc --out docs src --module commonjs --hideGenerator && node ./tools/formatDocs.js",
     "build": "npm run clean && npm run tsBuild && npm run docs",
-    "start": "npm run clean && npm run tsBuild && node ./es/index.js -m 'no message' -v"
+    "start": "npm run clean && npm run tsBuild && node ./es/index.js -m \"no message\" -v"
   },
   "keywords": [
     "gitacp"
