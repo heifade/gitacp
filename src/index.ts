@@ -82,7 +82,7 @@ async function addVersion(isAddVersion: boolean) {
     if (existsSync(packageLockFile)) {
       let json = JSON.parse(readFileSync(packageLockFile, { encoding: "utf-8" }));
       json.version = versionNew;
-      writeFileSync(packageFile, JSON.stringify(json, null, 2));
+      writeFileSync(packageLockFile, JSON.stringify(json, null, 2));
     }
 
     console.log(chalk.green(`    ${version} => ${versionNew}`));
