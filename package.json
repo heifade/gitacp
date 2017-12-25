@@ -1,6 +1,6 @@
 {
   "name": "gitacp",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "gitacp",
   "main": "./es/index.js",
   "module": "./es/index.js",
@@ -19,7 +19,7 @@
     "tsBuild": "tsc -p tsconfig.json && node ./tools/copy.js",
     "docs": "typedoc --out docs src --module commonjs --hideGenerator && node ./tools/formatDocs.js",
     "build": "npm run clean && npm run tsBuild && npm run docs",
-    "start": "npm run clean && npm run tsBuild && node ./es/index.js -m \"no message\" -v"
+    "start": "npm run clean && npm run tsBuild && node ./es/index.js -v"
   },
   "keywords": [
     "gitacp"
@@ -27,11 +27,11 @@
   "author": "heifade",
   "license": "MIT",
   "devDependencies": {
+    "@types/yargs": "^10.0.0",
     "fs-extra": "^5.0.0",
     "typedoc": "^0.9.0",
-    "typedoc-format": "^1.0.0-beta1",
-    "typescript": "^2.6.1",
-    "@types/yargs": "^10.0.0"
+    "typedoc-format": "^1.0.2",
+    "typescript": "^2.6.1"
   },
   "dependencies": {
     "chalk": "^2.3.0",
