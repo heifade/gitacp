@@ -1,7 +1,7 @@
 import { option } from "yargs";
 import { asyncExec } from "./asyncExec";
 import chalk from "chalk";
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, existsSync } from "fs";
 
 let defaultMessage = "no message";
 
@@ -77,6 +77,13 @@ async function addVersion(isAddVersion: boolean) {
     json.version = versionNew;
 
     writeFileSync(packageFile, JSON.stringify(json, null, 2));
+
+    let packageLockFile = "./package-lock.json";
+    if (existsSync(packageLockFile)) {
+      let json = JSON.parse(readFileSync(packageLockFile, { encoding: "utf-8" }));
+      json.version = versionNew;
+      writeFileSync(packageFile, JSON.stringify(json, null, 2));
+    }
 
     console.log(chalk.green(`    ${version} => ${versionNew}`));
 
