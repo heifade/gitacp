@@ -1,6 +1,6 @@
 {
   "name": "gitacp",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "gitacp",
   "main": "./es/index.js",
   "module": "./es/index.js",
@@ -8,12 +8,6 @@
   "files": [
     "es"
   ],
-  "bin": {
-    "gitacp": "./es/bin/gitacp",
-    "gitp": "./es/bin/gitacp",
-    "acp": "./es/bin/gitacp",
-    "pp": "./es/bin/gitacp"
-  },
   "scripts": {
     "build": "pcreate build",
     "start": "pcreate build && node ./es/index.js -v"

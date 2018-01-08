@@ -3,7 +3,7 @@ import { IProjectConfig } from './src/model/IProjectConfig';
 
 let projectConfig: IProjectConfig = {
   projectType: 'node',
-  command: true,
+  command: ["gitacp","gitp","acp","pp"],
   documents: true,
   unitTest: false,
 }
