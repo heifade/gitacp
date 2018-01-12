@@ -1,7 +1,7 @@
 import { option } from "yargs";
 import { asyncExec } from "./asyncExec";
 import chalk from "chalk";
-import { readFileSync, writeFileSync, existsSync } from "fs";
+import { readFileUtf8Sync, saveFileUtf8Sync, existsSync } from "fs-i";
 
 let defaultMessage = "no message";
 
@@ -59,7 +59,7 @@ async function gitacp(commitMessage: string) {
 async function addVersion(isAddVersion: boolean) {
   if (isAddVersion) {
     let packageFile = "./package.json";
-    let json = JSON.parse(readFileSync(packageFile, { encoding: "utf-8" }));
+    let json = JSON.parse(readFileUtf8Sync(packageFile));
     let version = json.version as string;
 
     console.log(chalk.blue.bold("version changed:"));
@@ -76,13 +76,13 @@ async function addVersion(isAddVersion: boolean) {
     }
     json.version = versionNew;
 
-    writeFileSync(packageFile, JSON.stringify(json, null, 2));
+    saveFileUtf8Sync(packageFile, JSON.stringify(json, null, 2));
 
     let packageLockFile = "./package-lock.json";
     if (existsSync(packageLockFile)) {
-      let json = JSON.parse(readFileSync(packageLockFile, { encoding: "utf-8" }));
+      let json = JSON.parse(readFileUtf8Sync(packageLockFile));
       json.version = versionNew;
-      writeFileSync(packageLockFile, JSON.stringify(json, null, 2));
+      saveFileUtf8Sync(packageLockFile, JSON.stringify(json, null, 2));
     }
 
     console.log(chalk.green(`    ${version} => ${versionNew}`));
