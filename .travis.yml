@@ -3,12 +3,9 @@ sudo: enabled
 node_js:
   - "8"
 before_script:
-  - npm i pcreate
-  - pcreate test -c
 script:
-  - pcreate build
+  - npm run build
 after_script:
-
 
 cache:
   directories:
@@ -22,10 +19,4 @@ deploy:
     on:
       branch: master
       repo: heifade/gitacp
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    local_dir: docs
-    on:
-      branch: master
 
