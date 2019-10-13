@@ -1,9 +1,11 @@
 import { option } from "yargs";
 import { asyncExec } from "./asyncExec";
 import chalk from "chalk";
-import { readFileUtf8Sync, saveFileUtf8Sync, existsSync } from "fs-i";
+import { readFileSync, writeFileSync, existsSync } from "fs";
 
-let defaultMessage = "no message";
+const defaultMessage = "no message";
+
+const encoding = { encoding: "utf8" };
 
 let pars = option("m", {
   alias: "message",
@@ -58,9 +60,9 @@ async function gitacp(commitMessage: string) {
  */
 async function addVersion(isAddVersion: boolean) {
   if (isAddVersion) {
-    let packageFile = "./package.json";
-    let json = JSON.parse(readFileUtf8Sync(packageFile));
-    let version = json.version as string;
+    const packageFile = "./package.json";
+    const json = JSON.parse(readFileSync(packageFile, encoding));
+    const version = json.version as string;
 
     console.log(chalk.blue.bold("version changed:"));
 
@@ -76,13 +78,13 @@ async function addVersion(isAddVersion: boolean) {
     }
     json.version = versionNew;
 
-    saveFileUtf8Sync(packageFile, JSON.stringify(json, null, 2));
+    writeFileSync(packageFile, JSON.stringify(json, null, 2), encoding);
 
     let packageLockFile = "./package-lock.json";
     if (existsSync(packageLockFile)) {
-      let json = JSON.parse(readFileUtf8Sync(packageLockFile));
+      let json = JSON.parse(readFileSync(packageLockFile, encoding));
       json.version = versionNew;
-      saveFileUtf8Sync(packageLockFile, JSON.stringify(json, null, 2));
+      writeFileSync(packageLockFile, JSON.stringify(json, null, 2), encoding);
     }
 
     console.log(chalk.green(`    ${version} => ${versionNew}`));
@@ -92,7 +94,7 @@ async function addVersion(isAddVersion: boolean) {
 }
 
 async function run() {
-  let versionNew = await addVersion(pars.v);
+  const versionNew = await addVersion(pars.v);
   // 如果没有填说明信息，并且版本号自增时，取版本号
   let message = pars.m;
   if (message === defaultMessage && versionNew) {
