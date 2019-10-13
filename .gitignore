@@ -4,11 +4,13 @@
 /node_modules
 
 # production
-/es
+/bin
+/lib
 /docs
 
 # misc
 .DS_Store
 npm-debug.log*
+yarn.lock
 
 /.nyc_output
