@@ -105,7 +105,7 @@ async function addVersion(isAddVersion: boolean) {
 
     console.log(chalk.green(`    ${version} => ${versionNew}`));
 
-    return versionNew;
+    return `V${versionNew}`;
   }
 }
 
