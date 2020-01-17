@@ -13,13 +13,21 @@ let pars = option("m", {
   default: defaultMessage,
   describe: "Please input message!",
   type: "string"
-}).option("v", {
-  alias: "addVersion",
-  demand: false,
-  default: false,
-  describe: "Is auto add version",
-  type: "boolean"
-}).argv;
+})
+  .option("v", {
+    alias: "addVersion",
+    demand: false,
+    default: false,
+    describe: "Is auto add version",
+    type: "boolean"
+  })
+  .option("t", {
+    alias: "add tag",
+    demand: false,
+    default: false,
+    describe: "Is auto add tag",
+    type: "boolean"
+  }).argv;
 
 async function print(title: string, msg: string, showIndex: boolean) {
   console.log(chalk.blue.bold(`${title}`));
@@ -48,6 +56,14 @@ async function gitacp(commitMessage: string) {
 
   resultMsg = await asyncExec("git", ["push"]);
   await print(`git push`, resultMsg, false);
+}
+
+async function gitAddTag(version: string) {
+  let resultMsg = await asyncExec("git", ["tag", version]);
+  await print(`git tag ${version}`, resultMsg, false);
+
+  resultMsg = await asyncExec("git", ["push", "--tags"]);
+  await print(`git push --tags`, resultMsg, false);
 }
 
 /**
@@ -101,6 +117,10 @@ async function run() {
     message = versionNew;
   }
   await gitacp(message);
+
+  if (pars.v && pars.t) {
+    await gitAddTag(versionNew);
+  }
 }
 
 run()
