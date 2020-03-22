@@ -62,8 +62,8 @@ async function gitAddTag(version: string) {
   let resultMsg = await asyncExec("git", ["tag", version]);
   await print(`git tag ${version}`, resultMsg, false);
 
-  resultMsg = await asyncExec("git", ["push", "--tags"]);
-  await print(`git push --tags`, resultMsg, false);
+  resultMsg = await asyncExec("git", ["push", version]);
+  await print(`git push ${version}`, resultMsg, false);
 }
 
 /**
