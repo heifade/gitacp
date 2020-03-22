@@ -59,8 +59,8 @@ async function gitacp(commitMessage: string) {
 }
 
 async function gitAddTag(version: string) {
-  let resultMsg = await asyncExec("git", ["tag", version]);
-  await print(`git tag ${version}`, resultMsg, false);
+  let resultMsg = await asyncExec("git", ["tag", "origin", version]);
+  await print(`git tag origin ${version}`, resultMsg, false);
 
   resultMsg = await asyncExec("git", ["push", version]);
   await print(`git push ${version}`, resultMsg, false);
