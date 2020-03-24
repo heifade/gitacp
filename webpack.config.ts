@@ -3,10 +3,12 @@ import { resolve } from "path";
 
 export default () => {
   const config: Configuration = {
-    entry: "./src/index.ts",
+    entry: {
+      gitac: "./src/gitac.ts",
+      gitacp: "./src/gitacp.ts"
+    },
     output: {
-      filename: "index.js",
-      path: resolve(__dirname, "./lib")
+      path: resolve(__dirname, "./dist")
     },
     mode: "production",
     // devtool: "source-map",

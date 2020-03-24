@@ -1,15 +1,15 @@
 {
   "name": "gitacp",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "gitacp",
   "bin": {
     "gitacp": "./bin/gitacp",
     "gitp": "./bin/gitacp",
-    "pp": "./bin/gitacp"
+    "gitac": "./bin/gitac"
   },
   "files": [
     "bin",
-    "lib"
+    "dist"
   ],
   "repository": {
     "type": "git",

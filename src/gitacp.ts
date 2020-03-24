@@ -44,7 +44,7 @@ async function print(title: string, msg: string, showIndex: boolean) {
   }
 }
 
-async function gitacp(commitMessage: string) {
+async function gitacp(commitMessage: string, push: boolean) {
   let resultMsg = await asyncExec("git", ["status", "-s"]);
   await print("git status -s", resultMsg, true);
 
@@ -54,8 +54,10 @@ async function gitacp(commitMessage: string) {
   resultMsg = await asyncExec("git", ["commit", "-m", `${commitMessage}`]);
   await print(`git commit -m "${commitMessage}"`, resultMsg, false);
 
-  resultMsg = await asyncExec("git", ["push"]);
-  await print(`git push`, resultMsg, false);
+  if (push) {
+    resultMsg = await asyncExec("git", ["push"]);
+    await print(`git push`, resultMsg, false);
+  }
 }
 
 async function gitAddTag(version: string) {
@@ -109,21 +111,21 @@ async function addVersion(isAddVersion: boolean) {
   }
 }
 
-async function run() {
+export async function run(push: boolean) {
   const versionNew = await addVersion(pars.v);
   // 如果没有填说明信息，并且版本号自增时，取版本号
   let message = pars.m;
   if (message === defaultMessage && versionNew) {
     message = versionNew;
   }
-  await gitacp(message);
+  await gitacp(message, push);
 
   if (pars.v && pars.t) {
     await gitAddTag(versionNew);
   }
 }
 
-run()
+run(true)
   .then(() => {
     console.log(chalk.green.bold("Success!"));
   })
