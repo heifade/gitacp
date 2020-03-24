@@ -1,4 +1,4 @@
-import { run } from "./gitacp";
+import { run } from "./git-common";
 import chalk from "chalk";
 
 run(false)
